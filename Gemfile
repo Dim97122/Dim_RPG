@@ -33,6 +33,12 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
+  # Use rspec for Testing
+  gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
+  # Use FactoryBot for Testing Resources creation
+  gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+  # Use Faker for Testing Resources creation
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 group :development do
@@ -50,6 +56,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # Use Faker for Assertions Syntax
+  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
+  # Use Nyan-Cat for funny Testing
+  gem 'nyan-cat-formatter', '~> 0.12.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
