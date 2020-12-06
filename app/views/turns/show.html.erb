@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Home character life points:</strong>
+  <%= @turn.home_character_life_points %>
+</p>
+
+<p>
+  <strong>Away character life points:</strong>
+  <%= @turn.away_character_life_points %>
+</p>
+
+<p>
+  <strong>Plays:</strong>
+  <%= @turn.plays %>
+</p>
+
+<%= link_to 'Edit', edit_turn_path(@turn) %> |
+<%= link_to 'Back', turns_path %>
