@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Turn, type: :model do
 
   before(:each) do
-    @Turn = FactoryBot.create(:turn)
+    @turn = FactoryBot.create(:turn)
   end
 
   it "has a valid factory" do
