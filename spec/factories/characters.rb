@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :character do
-    name { "MyString" }
-    life_points { 1 }
-    attack_points { 1 }
+    name { Faker::Name.first_name }
+    life_points { Faker::Number.between(from: 75, to: 125) }
+    attack_points { Faker::Number.between(from: 25, to: 50) }
   end
 end
