@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :set_characters, only: [:create]
 
   # GET /games
   # GET /games.json
@@ -15,6 +16,7 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @game = Game.new
+    @characters = Character.all
   end
 
   # GET /games/1/edit
@@ -24,11 +26,19 @@ class GamesController < ApplicationController
   # POST /games
   # POST /games.json
   def create
-    @game = Game.new(game_params)
-
+    @game = Game.create
+    @home_character = Character.all.sample
+    @away_character = Character.all.sample
+    @game.turns.create!(
+      home_character: @home_character,
+      home_character_life_points: @home_character.life_points,
+      away_character: @away_character,
+      away_character_life_points: @away_character.life_points,
+      plays: 0,
+    )
     respond_to do |format|
-      if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
+      if @game.turns.exists?
+        format.html { redirect_to @game }
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new }
@@ -65,6 +75,11 @@ class GamesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_game
       @game = Game.find(params[:id])
+    end
+
+    def set_characters
+      @home_character = Character.find(params[:game][:home_character])
+      @away_character = Character.find(params[:game][:away_character])
     end
 
     # Only allow a list of trusted parameters through.

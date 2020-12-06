@@ -1,5 +1,11 @@
-<h1>New Game</h1>
-
-<%= render 'form', game: @game %>
-
-<%= link_to 'Back', games_path %>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+  <h1 class="text-primary font-weight-bold">New Game</h1>
+  <p>Looks like you are a tough guy....Eyyh ?</p>
+  <p>Let's see what kind of characters we have here....</p>
+  <div class="d-flex justify-content-center flex-wrap">
+    <% @characters.each do |character| %>
+      <%= render '/characters/character-card', character: character %>
+    <% end %>
+  </div>
+  <%= render 'form', game: @game %>
+</div>
