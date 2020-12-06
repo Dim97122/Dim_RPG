@@ -1,0 +1,8 @@
+victim_card = document.getElementById("<%= @victim.name %>-card-wrapper");
+victim_card.innerHTML = "<%= j render "character-card", victim: @attacker, attacker: @victim %>";
+
+attacker_attack_button = document.getElementById("<%= @attacker.name %>-attack-button");
+attacker_attack_button.innerHTML = "";
+
+victim_attack_button = document.getElementById("<%= @victim.name %>-attack-button");
+victim_attack_button.innerHTML = "<%= j render "attack-button", victim: @attacker, attacker: @victim %>";

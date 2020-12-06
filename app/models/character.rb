@@ -12,4 +12,23 @@ class Character < ApplicationRecord
     }
   has_many :turns
   has_many :games, through: :turns
+
+  def is_dead
+    life_points <= 0
+  end
+
+  def take_damages(attacker, turn)
+    if self == turn.home_character
+      turn.update(
+        home_character_life_points: (self.life_points - attacker.attack_points)
+      )
+      turn.new_play
+    else
+      turn.update(
+        away_character_life_points: (self.life_points - attacker.attack_points)
+      )
+      turn.new_play
+    end
+    update(life_points: (life_points - attacker.attack_points))
+  end
 end

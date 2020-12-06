@@ -1,0 +1,9 @@
+<%= link_to "Attack", attack_path(
+  game_id: @game.id,
+  turn_id: @current_turn.id,
+  attacker_id: attacker.id,
+  victim_id: victim.id
+  ),
+  remote: true,
+  class: "btn btn-primary w-100 mt-3"
+%>

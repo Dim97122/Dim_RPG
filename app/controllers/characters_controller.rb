@@ -1,5 +1,6 @@
 class CharactersController < ApplicationController
   before_action :set_character, only: [:show, :edit, :update, :destroy]
+  before_action :set_attack_resources, only: [:attack]
 
   # GET /characters
   # GET /characters.json
@@ -61,10 +62,30 @@ class CharactersController < ApplicationController
     end
   end
 
+  def attack
+    @victim.take_damages(@attacker, @current_turn)
+    if @victim.is_dead
+      respond_to do |format|
+        format.html { redirect_to root_url }
+      end
+    else
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_character
       @character = Character.find(params[:id])
+    end
+
+    def set_attack_resources
+      @attacker = Character.find(params[:attacker_id])
+      @victim = Character.find(params[:victim_id])
+      @game = Game.find(params[:game_id])
+      @current_turn = Turn.find(params[:turn_id])
     end
 
     # Only allow a list of trusted parameters through.
