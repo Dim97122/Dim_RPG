@@ -11,6 +11,9 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    @home_character = @game.home_character
+    @away_character = @game.away_character
+    @current_turn = @game.current_turn
   end
 
   # GET /games/new
@@ -27,8 +30,6 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     @game = Game.create
-    @home_character = Character.all.sample
-    @away_character = Character.all.sample
     @game.turns.create!(
       home_character: @home_character,
       home_character_life_points: @home_character.life_points,

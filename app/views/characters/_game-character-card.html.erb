@@ -1,0 +1,18 @@
+<div id="<%= attacker.name %>-card" class="card bg-white text-dark p-3">
+  <div class="font-weight-bold text-secondary">
+    <%= attacker.name %>
+  </div>
+  <div id="<%= attacker.name %>-life-points" class="text-primary my-2">
+    <i class="fas fa-heart fa-lg"></i>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: <%= (attacker.life_points) - (attacker.life_points - 20) %>%" aria-valuenow="<%= attacker.life_points - 20 %>" aria-valuemin="0" aria-valuemax="<%= attacker.life_points %>"></div>
+    </div>
+  </div>
+  <div id="<%= attacker.name %>-attack-points" class="text-danger my-2">
+    <i class="fas fa-fist-raised fa-lg"></i>
+    <span class="font-weight-bold ml-3"><%= attacker.attack_points %></span>
+  </div>
+  <div id="<%= attacker.name %>-attack-button">
+    <%= render '/characters/attack-button', victim: victim, attacker: attacker %>
+  </div>
+</div>
