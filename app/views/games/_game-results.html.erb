@@ -5,7 +5,7 @@
   </h1>
   <h3 class="text-primary mt-4">
     <i class="fas fa-trophy"></i>
-    <span class="text-white"><%= game.winner.name %></span>
+    <span class="text-white"><%= @winner.name %></span>
   </h3>
   <div id="accordion" class="my-5">
     <% game.turns.each_with_index do |turn, index| %>

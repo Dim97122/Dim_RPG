@@ -6,14 +6,18 @@ class Turn < ApplicationRecord
   belongs_to  :home_character, class_name: "Character"
   belongs_to  :away_character, class_name: "Character"
 
+  def characters_alive
+    home_character.life_points >= 0 || away_character.life_points >= 0
+  end
+
   def new_play
-    if plays == 2
+    if self.plays == 2 && self.characters_alive
       turn = Turn.create!(
         game: game,
-        home_character: home_character,
-        home_character_life_points: home_character.life_points,
-        away_character: away_character,
-        away_character_life_points: away_character.life_points,
+        home_character: self.home_character,
+        home_character_life_points: self.home_character.life_points,
+        away_character: self.away_character,
+        away_character_life_points: self.away_character.life_points,
         plays: 0,
       )
     else

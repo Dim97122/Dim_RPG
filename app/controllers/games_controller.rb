@@ -15,6 +15,7 @@ class GamesController < ApplicationController
     @away_character = @game.away_character
     @current_turn = @game.current_turn
     @last_turn_index = @game.turns.length
+    @winner = @game.winner
   end
 
   # GET /games/new

@@ -20,9 +20,9 @@ class Game < ApplicationRecord
 
   def winner
     if current_turn.home_character_life_points <= 0
-      current_turn.away_character
+      return current_turn.away_character
     elsif current_turn.away_character_life_points <= 0
-      current_turn.home_character
+      return current_turn.home_character
     end
   end
 end
