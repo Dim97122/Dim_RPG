@@ -7,6 +7,9 @@
     <i class="fas fa-trophy"></i>
     <span class="text-white"><%= @winner.name %></span>
   </h3>
+  <div class="mt-2">
+    <%= image_tag(@winner.avatar, class: "avatar") %>
+  </div>
   <div id="accordion" class="my-5">
     <% game.turns.each_with_index do |turn, index| %>
       <div class="card">
