@@ -1,0 +1,17 @@
+<div class="card mx-4">
+  <div class="card-header">
+    Game <%= game.id %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title text-center">
+      <span class="text-primary font-weight-bold"><%= game.current_turn.away_character.name %></span>
+      VS
+      <span class="text-secondary font-weight-bold"><%= game.current_turn.home_character.name %></span>
+    </h5>
+    <div class="d-flex justify-content-end mt-3">
+      <%= link_to game_path(game), method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <i class="fas fa-trash text-danger"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
