@@ -1,7 +1,7 @@
 <div class="container d-flex flex-column justify-content-center align-items-center">
-  <h1 class="text-primary font-weight-bold">New Game</h1>
-  <p>Looks like you are a tough guy....Eyyh ?</p>
-  <p>Let's see what kind of characters we have here....</p>
+  <h1 class="text-primary font-weight-bold">Survival Arena</h1>
+  <p>Only the toughest warriors belong here, lots of them are already dead...</p>
+  <p>Let's see what kind of <span class="text-primary font-weight-bold">alive</span> characters we have here....</p>
   <div class="d-flex justify-content-center flex-wrap">
     <% @characters.each do |character| %>
       <%= render '/characters/character-card', character: character %>

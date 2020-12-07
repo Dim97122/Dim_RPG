@@ -17,7 +17,7 @@
       <div class="d-flex flex-column mx-2">
         <h3 class="text-primary font-weight-bold">Away Character</h3>
         <%= form.select :away_character, {}, class: "custom-select custom-select-lg mb-3" do %>
-          <% Character.all.each do |character| %>
+          <% @characters.each do |character| %>
             <%= content_tag(:option, character.name, value: character.id) %>
           <% end %>
         <% end %>
@@ -26,7 +26,7 @@
       <div class="d-flex flex-column">
         <h3 class="text-primary font-weight-bold">Home Character</h3>
         <%= form.select (:home_character) do %>
-          <% Character.all.each do |character| %>
+          <% @characters.each do |character| %>
             <%= content_tag(:option, character.name, value: character.id) %>
           <% end %>
         <% end %>

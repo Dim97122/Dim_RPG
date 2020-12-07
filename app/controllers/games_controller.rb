@@ -21,7 +21,7 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @game = Game.new
-    @characters = Character.all
+    @characters = Character.where("life_points >= ?", 0)
   end
 
   # GET /games/1/edit
