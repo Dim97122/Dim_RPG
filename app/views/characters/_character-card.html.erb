@@ -1,5 +1,5 @@
 <div class="card w-25 bg-secondary m-2">
-  <img class="card-img-top" src=<%= asset_path("warhammer.png") %> alt="Card image cap">
+  <%= image_tag(character.avatar, class: "avatar") %>
   <div class="card-body">
     <%= link_to character_path(character) do %>
       <h5 class="card-title text-primary font-weight-bold"><%= character.name %></h5>

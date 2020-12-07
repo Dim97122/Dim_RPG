@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <div class="custom-file my-4">
+    <%= form.label :avatar, class: "custom-file-label" %>
+    <%= form.file_field :avatar, class:"custom-file-input" %>
+  </div>
+
   <div class="form-group">
     <%= form.label :name, class: "text-primary font-weight-bold" %>
     <%= form.text_field :name, class:"form-control" %>

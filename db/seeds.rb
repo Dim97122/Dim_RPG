@@ -12,11 +12,42 @@ Character.destroy_all
 Game.destroy_all
 Turn.destroy_all
 
-5.times do
-  Character.create!(
-    name: Faker::Name.first_name,
-    description: Faker::Hipster.sentences.sample,
-    life_points: Faker::Number.between(from: 75, to: 125),
-    attack_points: Faker::Number.between(from: 25, to: 50)
-  )
-end
+character = Character.create!(
+  name: Faker::Name.first_name,
+  description: Faker::Hipster.sentences.sample,
+  life_points: Faker::Number.between(from: 75, to: 125),
+  attack_points: Faker::Number.between(from: 25, to: 50)
+)
+character.avatar.attach(io: File.open('app/assets/images/achichin.jpeg'), filename: 'achichin.jpeg')
+
+character = Character.create!(
+  name: Faker::Name.first_name,
+  description: Faker::Hipster.sentences.sample,
+  life_points: Faker::Number.between(from: 75, to: 125),
+  attack_points: Faker::Number.between(from: 25, to: 50)
+)
+character.avatar.attach(io: File.open('app/assets/images/cubanisto.jpg'), filename: 'cubanisto.jpg')
+
+character = Character.create!(
+  name: Faker::Name.first_name,
+  description: Faker::Hipster.sentences.sample,
+  life_points: Faker::Number.between(from: 75, to: 125),
+  attack_points: Faker::Number.between(from: 25, to: 50)
+)
+character.avatar.attach(io: File.open('app/assets/images/female_elf.jpeg'), filename: 'female_elf.jpeg')
+
+character = Character.create!(
+  name: Faker::Name.first_name,
+  description: Faker::Hipster.sentences.sample,
+  life_points: Faker::Number.between(from: 75, to: 125),
+  attack_points: Faker::Number.between(from: 25, to: 50)
+)
+character.avatar.attach(io: File.open('app/assets/images/valhalla.jpeg'), filename: 'valhalla.jpeg')
+
+character = Character.create!(
+  name: Faker::Name.first_name,
+  description: Faker::Hipster.sentences.sample,
+  life_points: Faker::Number.between(from: 75, to: 125),
+  attack_points: Faker::Number.between(from: 25, to: 50)
+)
+character.avatar.attach(io: File.open('app/assets/images/zorro.jpeg'), filename: 'zorro.jpeg')
