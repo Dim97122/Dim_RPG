@@ -11,22 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, class: "text-primary font-weight-bold" %>
+    <%= form.text_field :name, class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :life_points %>
-    <%= form.number_field :life_points %>
+  <div class="form-group">
+    <%= form.label :description, class: "text-primary font-weight-bold" %>
+    <%= form.text_area :description, class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :attack_points %>
-    <%= form.number_field :attack_points %>
+  <div class="form-group">
+    <%= form.label :life_points, class: "text-primary font-weight-bold" %> <br>
+    <%= form.select :life_points, Array(75..125), {}, { class:"form-control" } %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.label :attack_points, class: "text-primary font-weight-bold" %>
+    <%= form.select :attack_points, Array(25..50), {}, { class:"form-control" } %>
+  </div>
+
+  <div class="w-100 d-flex justify-content-center mt-2">
+    <%= form.submit class:"btn btn-primary btn-lg text-white" %>
   </div>
 <% end %>

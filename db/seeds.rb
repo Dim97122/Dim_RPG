@@ -15,6 +15,7 @@ Turn.destroy_all
 5.times do
   Character.create!(
     name: Faker::Name.first_name,
+    description: Faker::Hipster.sentences.sample,
     life_points: Faker::Number.between(from: 75, to: 125),
     attack_points: Faker::Number.between(from: 25, to: 50)
   )
