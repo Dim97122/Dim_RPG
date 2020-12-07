@@ -4,13 +4,17 @@
     <%= link_to character_path(character) do %>
       <h5 class="card-title text-primary font-weight-bold"><%= character.name %></h5>
     <% end %>
-    <p class="card-text">
+    <p class="card-text font-weight-bold">
       Life Points :
-      <span class="text-primary font-weight-bold"><%= character.life_points %></span>
+      <span class="text-primary"><%= character.life_points %></span>
     </p>
-    <p class="card-text">
+    <p class="card-text font-weight-bold">
       Attack Points :
-      <span class="text-primary font-weight-bold"><%= character.attack_points %></span>
+      <span class="text-primary"><%= character.attack_points %></span>
+    </p>
+    <p class="card-text font-weight-bold">
+      Description : <br>
+      <span class="font-weight-normal"><%= character.description %></span>
     </p>
   </div>
 </div>
