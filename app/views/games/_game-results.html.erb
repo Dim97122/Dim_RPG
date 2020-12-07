@@ -8,12 +8,12 @@
     <span class="text-white"><%= game.winner.name %></span>
   </h3>
   <div id="accordion" class="my-5">
-    <% game.turns.each do |turn| %>
+    <% game.turns.each_with_index do |turn, index| %>
       <div class="card">
         <div class="card-header w-100" id="heading-<%= turn.id %>">
           <h5 class="mb-0">
-            <button class="btn btn-link text-secondary" data-toggle="collapse" data-target="#collapse-<%= turn.id %>" aria-expanded="true" aria-controls="collapse-<%= turn.id %>">
-              Turn <%= turn.id %>
+            <button class="btn btn-link text-secondary mx-3" data-toggle="collapse" data-target="#collapse-<%= turn.id %>" aria-expanded="true" aria-controls="collapse-<%= turn.id %>">
+              Turn <%= index + 1 %>
             </button>
           </h5>
         </div>
