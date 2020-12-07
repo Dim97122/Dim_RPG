@@ -1,16 +1,19 @@
-<div id="<%= attacker.name %>-card" class="card bg-white text-dark p-3">
-  <div class="font-weight-bold text-secondary">
-    <%= attacker.name %>
-  </div>
-  <div id="<%= attacker.name %>-life-points" class="text-primary my-2">
-    <i class="fas fa-heart fa-lg"></i>
-    <span class="font-weight-bold ml-2"><%= attacker.life_points %></span>
-  </div>
-  <div id="<%= attacker.name %>-attack-points" class="text-danger my-2">
-    <i class="fas fa-fist-raised fa-lg"></i>
-    <span class="font-weight-bold ml-3"><%= attacker.attack_points %></span>
-  </div>
-  <div id="<%= attacker.name %>-attack-button">
-    <%= render '/characters/attack-button', victim: victim, attacker: attacker %>
+<div id="<%= attacker.name %>-card" class="card bg-white text-dark">
+  <%= image_tag(attacker.avatar, class: "avatar") %>
+  <div class="p-4">
+    <div class="font-weight-bold text-secondary">
+      <%= attacker.name %>
+    </div>
+    <div id="<%= attacker.name %>-life-points" class="text-primary my-2">
+      <i class="fas fa-heart fa-lg"></i>
+      <span class="font-weight-bold ml-2"><%= attacker.life_points %></span>
+    </div>
+    <div id="<%= attacker.name %>-attack-points" class="text-danger my-2">
+      <i class="fas fa-fist-raised fa-lg"></i>
+      <span class="font-weight-bold ml-3"><%= attacker.attack_points %></span>
+    </div>
+    <div id="<%= attacker.name %>-attack-button">
+      <%= render '/characters/attack-button', victim: victim, attacker: attacker %>
+    </div>
   </div>
 </div>
