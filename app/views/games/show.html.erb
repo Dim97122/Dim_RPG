@@ -5,7 +5,7 @@
       <%= render '/characters/game-character-card', victim: @home_character, attacker: @away_character %>
     </div>
     <div class="text-primary font-weight-bold">
-      Tour <%= @current_turn.id %>
+      Tour <span id="turn-index"><%= @last_turn_index %></span>
     </div>
     <div id="<%= @home_character.name %>-card-wrapper" class="w-25">
       <%= render '/characters/game-character-card', victim: @away_character, attacker: @home_character %>

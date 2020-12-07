@@ -63,8 +63,10 @@ class CharactersController < ApplicationController
   end
 
   def attack
-    @victim.take_damages(@attacker, @current_turn)
-    if @victim.is_dead
+    attack_data = @victim.take_damages(@attacker, @current_turn)
+    @current_turn = attack_data[:turn_infos][:turn]
+    @turn_index = attack_data[:turn_infos][:index]
+    if attack_data[:victim].is_dead
       respond_to do |format|
         format.html { redirect_to root_url }
       end

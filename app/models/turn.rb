@@ -7,9 +7,9 @@ class Turn < ApplicationRecord
   belongs_to  :away_character, class_name: "Character"
 
   def new_play
-    current_game = game
     if plays == 2
-      current_game.turns.create!(
+      turn = Turn.create!(
+        game: game,
         home_character: home_character,
         home_character_life_points: home_character.life_points,
         away_character: away_character,
@@ -17,7 +17,10 @@ class Turn < ApplicationRecord
         plays: 0,
       )
     else
-      update(plays: plays + 1)
+      if update!(plays: plays + 1)
+        turn = self
+      end
     end
+    return turn
   end
 end
