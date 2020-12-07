@@ -67,8 +67,9 @@ class CharactersController < ApplicationController
     @current_turn = attack_data[:turn_infos][:turn]
     @turn_index = attack_data[:turn_infos][:index]
     if attack_data[:victim].is_dead
+      @game.update(finished?: true)
       respond_to do |format|
-        format.html { redirect_to root_url }
+        format.html { redirect_to game_url(@game) }
       end
     else
       respond_to do |format|

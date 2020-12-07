@@ -30,7 +30,7 @@ class GamesController < ApplicationController
   # POST /games
   # POST /games.json
   def create
-    @game = Game.create
+    @game = Game.create(finished?: false)
     @game.turns.create!(
       home_character: @home_character,
       home_character_life_points: @home_character.life_points,

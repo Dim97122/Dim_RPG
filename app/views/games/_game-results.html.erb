@@ -1,0 +1,57 @@
+
+<div class="d-flex flex-column justify-content-center align-items-center py-5">
+  <h1 class="text-primary">
+    Game <%= game.id %>
+  </h1>
+  <h3 class="text-primary mt-4">
+    <i class="fas fa-trophy"></i>
+    <span class="text-white"><%= game.winner.name %></span>
+  </h3>
+  <div id="accordion" class="my-5">
+    <% game.turns.each do |turn| %>
+      <div class="card">
+        <div class="card-header w-100" id="heading-<%= turn.id %>">
+          <h5 class="mb-0">
+            <button class="btn btn-link text-secondary" data-toggle="collapse" data-target="#collapse-<%= turn.id %>" aria-expanded="true" aria-controls="collapse-<%= turn.id %>">
+              Turn <%= turn.id %>
+            </button>
+          </h5>
+        </div>
+
+        <div id="collapse-<%= turn.id %>" class="collapse" aria-labelledby="heading-<%= turn.id %>" data-parent="#accordion">
+          <div class="card-body text-primary">
+            <div class="d-flex flex-column justify-content-around">
+              <div class="d-flex flex-column justify-content-center align-items-center mb-4">
+                <div class="font-weight-bold">
+                  <%= turn.away_character.name %>
+                </div>
+                <div class="text-dark">
+                  <% if turn.away_character_life_points <= 0 %>
+                    <i class="fas fa-skull-crossbones fa-2x text-danger"></i>
+                  <% else %>
+                    <%= turn.away_character_life_points %> Life Points
+                  <% end %>
+                </div>
+              </div>
+              <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="font-weight-bold">
+                  <%= turn.home_character.name %>
+                </div>
+                <div class="text-dark">
+                  <% if turn.home_character_life_points <= 0 %>
+                    <i class="fas fa-skull-crossbones fa-2x text-danger"></i>
+                  <% else %>
+                    <%= turn.home_character_life_points %> Life Points
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="text-primary">
+    <%= link_to "All Games", games_path %>
+  </div>
+</div>

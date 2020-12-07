@@ -1,14 +1,5 @@
-
-<div id="game-deck">
-  <div class="d-flex align-items-center justify-content-around w-100 h-100">
-    <div id="<%= @away_character.name %>-card-wrapper" class="w-25">
-      <%= render '/characters/game-character-card', victim: @home_character, attacker: @away_character %>
-    </div>
-    <div class="text-primary font-weight-bold">
-      Tour <span id="turn-index"><%= @last_turn_index %></span>
-    </div>
-    <div id="<%= @home_character.name %>-card-wrapper" class="w-25">
-      <%= render '/characters/game-character-card', victim: @away_character, attacker: @home_character %>
-    </div>
-  </div>
-</div>
+<% if @game.finished? %>
+  <%= render 'game-results', game: @game %>
+<% else %>
+  <%= render 'game-deck', victim: @away_character, attacker: @home_character %>
+<% end %>
