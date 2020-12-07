@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_122615) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
+    t.text "description"
     t.integer "life_points"
     t.integer "attack_points"
     t.datetime "created_at", precision: 6, null: false
