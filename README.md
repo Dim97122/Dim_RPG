@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+DimRPG is a simple RPG project with which you can
 
-Things you may want to cover:
+* Create a character
+* Add an item
+* Make them fight!
 
-* Ruby version
+## LAUNCH THE APP
+* rails db:create
+* rails db:migrate
+* rails db:seed
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## PLAY !
