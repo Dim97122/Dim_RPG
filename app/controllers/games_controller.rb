@@ -34,9 +34,9 @@ class GamesController < ApplicationController
     @game = Game.create(finished?: false)
     @game.turns.create!(
       home_character: @home_character,
-      home_character_life_points: @home_character.life_points,
+      home_character_life_points: @home_character.armor_level,
       away_character: @away_character,
-      away_character_life_points: @away_character.life_points,
+      away_character_life_points: @away_character.armor_level,
       plays: 0,
     )
     respond_to do |format|
@@ -82,7 +82,9 @@ class GamesController < ApplicationController
 
     def set_characters
       @home_character = Character.find(params[:game][:home_character])
+      @home_character.items << Item.find(params[:game][:home_character_item])
       @away_character = Character.find(params[:game][:away_character])
+      @away_character.items << Item.find(params[:game][:away_character_item])
     end
 
     # Only allow a list of trusted parameters through.

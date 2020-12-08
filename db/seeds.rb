@@ -9,6 +9,7 @@
 require 'faker'
 
 Character.destroy_all
+Item.destroy_all
 Game.destroy_all
 Turn.destroy_all
 
@@ -51,3 +52,19 @@ character = Character.create!(
   attack_points: Faker::Number.between(from: 25, to: 50)
 )
 character.avatar.attach(io: File.open('app/assets/images/zorro.jpeg'), filename: 'zorro.jpeg')
+
+5.times do
+  Item.create!(
+    name: Faker::Games::ElderScrolls.weapon,
+    item_type: 'Weapon',
+    attack_points: Faker::Number.between(from: 5, to: 25)
+  )
+end
+
+5.times do
+  Item.create!(
+    name: Faker::Games::ElderScrolls.jewelry,
+    item_type: 'Defensive Item',
+    defense_points: Faker::Number.between(from: 10, to: 40)
+  )
+end

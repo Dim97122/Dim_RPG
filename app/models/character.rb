@@ -9,6 +9,29 @@ class Character < ApplicationRecord
   has_one_attached :avatar
   has_many :turns
   has_many :games, through: :turns
+  has_and_belongs_to_many :items
+
+  def power_level
+    power_level = attack_points
+    offensive_items = items.where('item_type = ?', 'Weapon')
+    if offensive_items
+      offensive_items.each do |item|
+        power_level += item.attack_points
+      end
+    end
+    return power_level
+  end
+
+  def armor_level
+    armor_level = life_points
+    defensive_items = items.where('item_type = ?', 'Defensive Item')
+    if defensive_items
+      defensive_items.each do |item|
+        armor_level += item.defense_points
+      end
+    end
+    return armor_level
+  end
 
   def is_dead
     life_points <= 0
@@ -19,14 +42,14 @@ class Character < ApplicationRecord
     current_turn = turn.new_play
     if self == turn.home_character
       current_turn.update!(
-        home_character_life_points: (life_points - attacker.attack_points)
+        home_character_life_points: (armor_level - attacker.power_level)
       )
     else
       current_turn.update!(
-        away_character_life_points: (life_points - attacker.attack_points)
+        away_character_life_points: (armor_level - attacker.power_level)
       )
     end
-    update!(life_points: (life_points - attacker.attack_points))
+    update!(life_points: (armor_level - attacker.power_level))
     return { victim: self, turn_infos: {turn: current_turn, index: current_game.turns.length} }
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_200855) do
+ActiveRecord::Schema.define(version: 2020_12_08_090158) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -42,8 +42,24 @@ ActiveRecord::Schema.define(version: 2020_12_07_200855) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "characters_items", id: false, force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "item_id"
+    t.index ["character_id"], name: "index_characters_items_on_character_id"
+    t.index ["item_id"], name: "index_characters_items_on_item_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.boolean "finished?"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "item_type"
+    t.integer "attack_points"
+    t.integer "defense_points"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
